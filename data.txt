@@ -1,0 +1,18 @@
+<?php
+$stokid=$_GET['id'];
+include('phpqrcode/qrlib.php');
+
+
+<?php
+$text = QRcode::text($stokid);
+$raw = join("<br/>", $text);
+
+$raw = strtr($raw, array(
+    '0' => '<span style="color:white">&#9608;&#9608;</span>',
+    '1' => '&#9608;&#9608;'
+));
+
+// displaying
+
+echo '<tt style="font-size:7px">'.$raw.'</tt>';
+?>
